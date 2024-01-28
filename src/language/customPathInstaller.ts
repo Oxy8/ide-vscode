@@ -100,17 +100,6 @@ export class CustomPathInstaller {
     const files = await fs.promises.readdir(installationDir);
     for(const file of files) {
       // eslint-disable-next-line max-depth
-      if(!(file.endsWith(dll)
-        || file.endsWith(runtimeconfigjson)
-        || file.endsWith(depsjson)
-        || file.endsWith('.pdb')
-        || file.endsWith('.exe')
-        || file === 'z3'
-        || file === 'DafnyPrelude.bpl'
-        || file === 'runtimes')) {
-        continue;
-      }
-      // eslint-disable-next-line max-depth
       const srcFile = path.join(installationDir, file);
       const targetFile = path.join(vscodeDir, file);
       if((await fs.promises.stat(srcFile)).isDirectory()) {
